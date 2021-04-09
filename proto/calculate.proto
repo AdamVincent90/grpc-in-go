@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package calculate;
+
+option go_package = "./calculate";
+
+service CalculateService {
+  rpc Add(AddRequest) returns (AddResponse) {};
+}
+
+message Sums {
+  int32 sum1 = 1;
+  int32 sum2 = 2;
+}
+
+message AddRequest { Sums sums = 1; }
+
+message AddResponse { int32 result = 1; }
