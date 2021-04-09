@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"io"
 	"log"
 
 	"./src/calculate"
@@ -31,6 +32,10 @@ func main() {
 	unaryGreetRequest(c, "Nikolai", "Ifrim")
 
 	unaryAddRequest(ca, 25, 10)
+
+	//serverStreamGreetRequest(c, "Adam")
+
+	serverStreamPrimeNumberRequest(ca, 1080)
 
 }
 
@@ -66,4 +71,56 @@ func unaryAddRequest(gsc calculate.CalculateServiceClient, foo int32, bar int32)
 	}
 
 	fmt.Println(res)
+}
+
+func serverStreamGreetRequest(gsc greet.GreetServiceClient, name string) {
+
+	req := &greet.GreetManyTimesRequest{
+		Greeting: &greet.Greeting{
+			FirstName: name,
+		},
+	}
+	resStream, err := gsc.GreetManyTimes(context.Background(), req)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	for {
+		msg, err := resStream.Recv()
+		if err == io.EOF {
+			fmt.Println("End of stream..")
+			break
+		}
+		if err != nil {
+			log.Fatalln("Error during stream", err)
+		}
+		fmt.Println(msg)
+	}
+}
+
+func serverStreamPrimeNumberRequest(psc calculate.CalculateServiceClient, num int32) {
+
+	req := &calculate.PrimeNumberRequest{
+		Num: num,
+	}
+
+	resStream, err := psc.PrimeDecomposition(context.Background(), req)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	for {
+		msg, err := resStream.Recv()
+		if err == io.EOF {
+			fmt.Println("END OF STREAM")
+		}
+		if err != nil {
+			log.Fatalln(err)
+		}
+
+		fmt.Println(msg)
+	}
+
 }

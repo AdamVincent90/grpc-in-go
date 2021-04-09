@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"strconv"
+	"time"
 
 	"../src/calculate"
 	"../src/greet"
@@ -62,4 +64,44 @@ func (*server) Add(ctx context.Context, req *calculate.AddRequest) (*calculate.A
 	}
 
 	return res, nil
+}
+
+func (*server) GreetManyTimes(req *greet.GreetManyTimesRequest, stream greet.GreetService_GreetManyTimesServer) error {
+	fmt.Println(req, "invoked")
+
+	name := req.GetGreeting().GetFirstName()
+
+	for i := 0; i < 10; i++ {
+		result := "Hello There " + name + ", this response has been sent to you " + strconv.Itoa(i) + " times!"
+		res := &greet.GreetManyTimesResponse{
+			Result: result,
+		}
+		stream.Send(res)
+		time.Sleep(1000 * time.Millisecond)
+	}
+
+	return nil
+}
+
+func (*server) PrimeDecomposition(req *calculate.PrimeNumberRequest, stream calculate.CalculateService_PrimeDecompositionServer) error {
+	fmt.Println(req, "invoked")
+	var k int32
+	number := req.GetNum()
+
+	k = 2
+
+	for number > 1 {
+		if number%k == 0 {
+
+			res := &calculate.PrimeNumberResponse{
+				Result: k,
+			}
+			stream.Send(res)
+			number = number / k
+			time.Sleep(500 * time.Millisecond)
+		} else {
+			k = k + 1
+		}
+	}
+	return nil
 }

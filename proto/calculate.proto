@@ -6,6 +6,8 @@ option go_package = "./calculate";
 
 service CalculateService {
   rpc Add(AddRequest) returns (AddResponse) {};
+  rpc PrimeDecomposition(PrimeNumberRequest)
+      returns (stream PrimeNumberResponse) {};
 }
 
 message Sums {
@@ -16,3 +18,7 @@ message Sums {
 message AddRequest { Sums sums = 1; }
 
 message AddResponse { int32 result = 1; }
+
+message PrimeNumberRequest { int32 num = 1; }
+
+message PrimeNumberResponse { int32 result = 1; }

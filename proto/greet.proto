@@ -6,6 +6,9 @@ option go_package = "./greet";
 service GreetService {
   // Unary service
   rpc Greet(GreetRequest) returns (GreetResponse) {};
+  // Server Streaming Service
+  rpc GreetManyTimes(GreetManyTimesRequest)
+      returns (stream GreetManyTimesResponse) {};
 }
 
 message Greeting {
@@ -16,3 +19,6 @@ message Greeting {
 message GreetRequest { Greeting greeting = 1; }
 
 message GreetResponse { string result = 1; }
+
+message GreetManyTimesRequest { Greeting greeting = 1; }
+message GreetManyTimesResponse { string result = 1; }
