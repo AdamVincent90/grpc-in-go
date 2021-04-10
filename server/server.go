@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"io"
 	"log"
 	"net"
 	"strconv"
@@ -38,6 +39,79 @@ func main() {
 	if err := s.Serve(nl); err != nil {
 		log.Fatalln(err)
 	}
+}
+
+func (*server) GreetEveryone(stream greet.GreetService_GreetEveryoneServer) error {
+	fmt.Println("Bi-directional streaming invoked")
+
+	for {
+		req, err := stream.Recv()
+		if err == io.EOF {
+			return nil
+		}
+		if err != nil {
+			log.Fatalln(err)
+		}
+		fn := req.GetGreeting().GetFirstName()
+		result := "Hello " + fn
+
+		res := &greet.GreetEveryoneResponse{
+			Result: result,
+		}
+		fmt.Println("Sending Stream response", result, "to client stream")
+		err = stream.Send(res)
+		if err != nil {
+			log.Fatalln(err)
+		}
+	}
+}
+
+func (*server) AverageNumber(stream calculate.CalculateService_AverageNumberServer) error {
+	counter := 0
+	sum := float32(0)
+	for {
+		msg, err := stream.Recv()
+		fmt.Println("Received message from client stream", counter, sum)
+		if err == io.EOF {
+			fmt.Println("END OF FILE")
+			sum = sum / float32(counter)
+			return stream.SendAndClose(&calculate.ClientStreamNumberResponse{
+				Num: sum,
+			})
+		}
+		if err != nil {
+			log.Fatalln(err)
+		}
+		sum += msg.GetNum()
+		counter += 1
+	}
+}
+
+func (*server) LongGreet(stream greet.GreetService_LongGreetServer) error {
+
+	fmt.Println("Client stream invoked..")
+	var result string
+
+	for {
+		s, err := stream.Recv()
+		fmt.Println("received message from client stream", s)
+
+		if err == io.EOF {
+			fmt.Println("END OF FILE")
+			return stream.SendAndClose(&greet.LongGreetResponse{
+				Result: result,
+			})
+		}
+		if err != nil {
+			return err
+		}
+
+		fname := s.GetGreeting().GetFirstName()
+
+		result += "Hello " + fname + " Nice to meet you!\n"
+
+	}
+
 }
 
 func (*server) Greet(ctx context.Context, req *greet.GreetRequest) (*greet.GreetResponse, error) {
