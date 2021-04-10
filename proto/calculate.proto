@@ -10,6 +10,8 @@ service CalculateService {
       returns (stream PrimeNumberResponse) {};
   rpc AverageNumber(stream ClientStreamNumberRequest)
       returns (ClientStreamNumberResponse) {};
+  rpc MaxNumber(stream StreamNumberRequest)
+      returns (stream StreamNumberResponse) {};
 }
 
 message Sums {
@@ -28,3 +30,6 @@ message PrimeNumberResponse { int32 result = 1; }
 message ClientStreamNumberRequest { float num = 1; }
 
 message ClientStreamNumberResponse { float num = 1; }
+
+message StreamNumberRequest { int32 num = 1; }
+message StreamNumberResponse { int32 num = 1; }

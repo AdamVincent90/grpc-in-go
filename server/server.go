@@ -41,6 +41,36 @@ func main() {
 	}
 }
 
+func (*server) MaxNumber(css calculate.CalculateService_MaxNumberServer) error {
+	fmt.Println("Bi-drectional streaming initiated")
+	result := int32(0)
+	for {
+		req, err := css.Recv()
+		if err == io.EOF {
+			return nil
+		}
+		if err != nil {
+			log.Fatalln(err)
+		}
+
+		if result <= req.GetNum() {
+			result = req.GetNum()
+		}
+
+		res := &calculate.StreamNumberResponse{
+			Num: result,
+		}
+
+		fmt.Println("Sending result", result, "to client..")
+
+		err = css.Send(res)
+		if err != nil {
+			log.Fatalln(err)
+		}
+
+	}
+}
+
 func (*server) GreetEveryone(stream greet.GreetService_GreetEveryoneServer) error {
 	fmt.Println("Bi-directional streaming invoked")
 

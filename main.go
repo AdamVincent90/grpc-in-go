@@ -27,8 +27,8 @@ func main() {
 
 	defer cc.Close()
 
-	c := greet.NewGreetServiceClient(cc)
-	//ca := calculate.NewCalculateServiceClient(cc)
+	//c := greet.NewGreetServiceClient(cc)
+	ca := calculate.NewCalculateServiceClient(cc)
 
 	//unaryGreetRequest(c, "Nikolai", "Ifrim")
 
@@ -42,8 +42,62 @@ func main() {
 
 	//clientStreamingAverageNumber(ca)
 
-	BidirectionalStream(c)
+	//BidirectionalStream(c)
 
+	BiDrectionalMaxNumber(ca)
+
+}
+
+func BiDrectionalMaxNumber(ca calculate.CalculateServiceClient) {
+	stream, err := ca.MaxNumber(context.Background())
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	wait := make(chan struct{})
+
+	req := []int32{1, 2, 3, 4, 5, 3}
+
+	// GO ROUTINE TO STREAM MESSAGES TO SERVER (FUNCTIONAL LITERAL)
+	go func() {
+		for _, r := range req {
+			fmt.Println("Streaming number to server..", r)
+			err := stream.Send(&calculate.StreamNumberRequest{
+				Num: r,
+			})
+			time.Sleep(1000 * time.Millisecond)
+			if err == io.EOF {
+				fmt.Println("END OF FILE")
+				break
+			}
+			if err != nil {
+				log.Fatalln(err)
+			}
+		}
+
+		err = stream.CloseSend()
+		if err != nil {
+			log.Fatalln(err)
+		}
+	}()
+	// GO ROUTINE TO RECEIVE A STREAM OF MESSAGES FROM SERVER (FUNCTION LITERAL)
+	go func() {
+		for {
+			res, err := stream.Recv()
+			if err == io.EOF {
+				fmt.Println("END OF FILE")
+				break
+			}
+			if err != nil {
+				log.Fatalln(err)
+			}
+
+			fmt.Println("The Max Number is:", res.GetNum())
+		}
+		close(wait)
+	}()
+
+	fmt.Println(<-wait)
 }
 
 func BidirectionalStream(c greet.GreetServiceClient) {
