@@ -56,7 +56,7 @@ func BiDrectionalMaxNumber(ca calculate.CalculateServiceClient) {
 
 	wait := make(chan struct{})
 
-	req := []int32{1, 2, 3, 4, 5, 3}
+	req := []int32{1, 10, 3, 4, 5, 11, 10, 10, 8, 12}
 
 	// GO ROUTINE TO STREAM MESSAGES TO SERVER (FUNCTIONAL LITERAL)
 	go func() {
@@ -92,7 +92,7 @@ func BiDrectionalMaxNumber(ca calculate.CalculateServiceClient) {
 				log.Fatalln(err)
 			}
 
-			fmt.Println("The Max Number is:", res.GetNum())
+			fmt.Println("The New Max Number is:", res.GetNum())
 		}
 		close(wait)
 	}()

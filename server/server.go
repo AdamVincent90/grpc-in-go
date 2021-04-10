@@ -55,15 +55,13 @@ func (*server) MaxNumber(css calculate.CalculateService_MaxNumberServer) error {
 
 		if result <= req.GetNum() {
 			result = req.GetNum()
+			res := &calculate.StreamNumberResponse{
+				Num: result,
+			}
+			fmt.Println("Sending New Max Number..", result, "to client..")
+			err = css.Send(res)
 		}
 
-		res := &calculate.StreamNumberResponse{
-			Num: result,
-		}
-
-		fmt.Println("Sending result", result, "to client..")
-
-		err = css.Send(res)
 		if err != nil {
 			log.Fatalln(err)
 		}
