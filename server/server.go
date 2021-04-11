@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"math"
 	"net"
 	"strconv"
 	"time"
@@ -12,6 +13,9 @@ import (
 	"../src/calculate"
 	"../src/greet"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/credentials"
+	"google.golang.org/grpc/status"
 )
 
 type server struct{}
@@ -21,8 +25,14 @@ func main() {
 
 	const (
 		protocol = "tcp"             // grpc uses TCP PROTOCOL
-		address  = "127.0.0.1:50051" // 50051 port represents GRPC PORT
+		address  = "localhost:50051" // 50051 port represents GRPC PORT
 	)
+
+	creds, credErr := credentials.NewServerTLSFromFile("./ssl/server.crt", "./ssl/server.pem")
+
+	if credErr != nil {
+		log.Fatalln(credErr)
+	}
 
 	nl, err := net.Listen(protocol, address) // TAKES IN PROTOCOL AND ADDRESS, LISTENS ON THAT PORT FOR SERVICES
 	if err != nil {
@@ -31,7 +41,7 @@ func main() {
 
 	fmt.Println("Server Running at:", address) // if no error then specify to console server is running at address
 
-	s := grpc.NewServer() // creates a pointer to the grpc.server
+	s := grpc.NewServer(grpc.Creds(creds)) // creates a pointer to the grpc.server
 
 	greet.RegisterGreetServiceServer(s, &server{}) // registers a server with the grpc server s and the services
 	calculate.RegisterCalculateServiceServer(s, &server{})
@@ -41,12 +51,48 @@ func main() {
 	}
 }
 
+func (*server) Deadline(c context.Context, req *greet.DeadlineRequest) (*greet.DeadlineResponse, error) {
+	fmt.Println("Invoking Deadline Server..")
+	for i := 0; i < 4; i++ {
+		if c.Err() == context.Canceled {
+			fmt.Println("Deadline Exceeded..")
+			return nil, status.Error(codes.Canceled, "The client has terminated the request due exceeded deadline")
+		} else {
+			time.Sleep(1 * time.Second)
+		}
+	}
+
+	result := &greet.DeadlineResponse{
+		Result: "Hello There " + req.GetGreeting().GetFirstName(),
+	}
+
+	return result, nil
+}
+
+func (*server) SquareRoot(c context.Context, req *calculate.SquareRootRequest) (*calculate.SquareRootResponse, error) {
+	fmt.Println("invoking square root on server..")
+
+	if req.GetNumber() < 0 {
+		fmt.Println("Error Occured, returning error to client..")
+		return nil, status.Errorf(codes.InvalidArgument, "Number must be equal or more to 0")
+	}
+
+	result := math.Sqrt(float64(req.GetNumber()))
+
+	res := &calculate.SquareRootResponse{
+		Result: float32(result),
+	}
+
+	return res, nil
+}
+
 func (*server) MaxNumber(css calculate.CalculateService_MaxNumberServer) error {
 	fmt.Println("Bi-drectional streaming initiated")
 	result := int32(0)
 	for {
 		req, err := css.Recv()
 		if err == io.EOF {
+			fmt.Println("End of server stream..")
 			return nil
 		}
 		if err != nil {

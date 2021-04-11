@@ -12,12 +12,19 @@ service CalculateService {
       returns (ClientStreamNumberResponse) {};
   rpc MaxNumber(stream StreamNumberRequest)
       returns (stream StreamNumberResponse) {};
+  // An error will be thrown if the argument within SquareRootRequest involves a
+  // negative number, Error result would specify - INVALID_ARGUMENT
+  rpc SquareRoot(SquareRootRequest) returns (SquareRootResponse) {};
 }
 
 message Sums {
   int32 sum1 = 1;
   int32 sum2 = 2;
 }
+
+message SquareRootRequest { float number = 1; }
+
+message SquareRootResponse { float result = 1; }
 
 message AddRequest { Sums sums = 1; }
 

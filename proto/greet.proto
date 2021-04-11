@@ -13,6 +13,7 @@ service GreetService {
   rpc LongGreet(stream LongGreetRequest) returns (LongGreetResponse) {};
   rpc GreetEveryone(stream GreetEveryoneRequest)
       returns (stream GreetEveryoneResponse) {};
+  rpc Deadline(DeadlineRequest) returns (DeadlineResponse) {};
 }
 
 // Greeting type
@@ -36,3 +37,7 @@ message LongGreetResponse { string result = 1; }
 // Bidirectional stream request and response messages
 message GreetEveryoneRequest { Greeting greeting = 1; }
 message GreetEveryoneResponse { string result = 1; }
+
+// Unary request and response with deadline
+message DeadlineRequest { Greeting greeting = 1; }
+message DeadlineResponse { string result = 1; }

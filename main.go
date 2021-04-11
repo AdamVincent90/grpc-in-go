@@ -11,26 +11,40 @@ import (
 	"./src/greet"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/credentials"
+	"google.golang.org/grpc/status"
 )
 
 func main() {
 	fmt.Println("Running Applicaiton..")
 	const (
-		target = "127.0.0.1:50051"
+		target = "localhost:50051"
 	)
 
-	cc, err := grpc.Dial(target, grpc.WithInsecure())
+	creds, credErr := credentials.NewClientTLSFromFile("./ssl/ca.crt", "")
+
+	if credErr != nil {
+		log.Fatalln("Error getting TLS Cerfication", credErr)
+	}
+
+	cc, err := grpc.Dial(target, grpc.WithTransportCredentials(creds))
 
 	if err != nil {
-		log.Fatalf("%+v", err)
+		fmt.Println("Error validating SSL Certification...", err)
+		fmt.Println("Running API with insecure..")
+		cc, err = grpc.Dial(target, grpc.WithInsecure())
+		if err != nil {
+			log.Fatalln("Cannot load API with insecure, terminating program.", err)
+		}
 	}
 
 	defer cc.Close()
 
-	//c := greet.NewGreetServiceClient(cc)
-	ca := calculate.NewCalculateServiceClient(cc)
+	c := greet.NewGreetServiceClient(cc)
+	//ca := calculate.NewCalculateServiceClient(cc)
 
-	//unaryGreetRequest(c, "Nikolai", "Ifrim")
+	unaryGreetRequest(c, "Nikolai", "Ifrim")
 
 	//unaryAddRequest(ca, 25, 10)
 
@@ -44,8 +58,71 @@ func main() {
 
 	//BidirectionalStream(c)
 
-	BiDrectionalMaxNumber(ca)
+	//BiDrectionalMaxNumber(ca)
 
+	// UnarySquareRoot(ca, 10)
+	// UnarySquareRoot(ca, -10)
+	// UnaryWithDeadline(c, 5*time.Second)
+	// UnaryWithDeadline(c, 2*time.Second)
+}
+
+func UnaryWithDeadline(c greet.GreetServiceClient, timer time.Duration) {
+	user := &greet.DeadlineRequest{
+		Greeting: &greet.Greeting{
+			FirstName: "Ricky",
+			LastName:  "Champ",
+		},
+	}
+	ctx, ctxFunc := context.WithTimeout(context.Background(), timer)
+	defer ctxFunc()
+
+	res, err := c.Deadline(ctx, user)
+
+	if err != nil {
+		err2, ok := status.FromError(err)
+		if ok {
+			if err2.Code() == codes.DeadlineExceeded {
+				fmt.Println("Response exceeded deadline, cancelling server response")
+				fmt.Println(err2.Message())
+				return
+			} else {
+				fmt.Println("Unexpected error:", err2.Message())
+				return
+			}
+		} else {
+			log.Fatalln(err2)
+		}
+	}
+
+	fmt.Println("Received response within deadline", res)
+}
+
+func UnarySquareRoot(ca calculate.CalculateServiceClient, number float32) {
+
+	req := &calculate.SquareRootRequest{
+		Number: number,
+	}
+
+	res, err := ca.SquareRoot(context.Background(), req)
+
+	if err != nil {
+		resErr, ok := status.FromError(err)
+
+		if ok {
+			fmt.Println(resErr.Message())
+			fmt.Println(resErr.Code())
+			if resErr.Code() == codes.InvalidArgument {
+				fmt.Println("Argument in Request - INVALID ARGUMENT")
+				return
+			}
+			return
+		} else {
+			log.Fatalln(err)
+		}
+
+	}
+
+	fmt.Println("Received result from server", res.GetResult())
 }
 
 func BiDrectionalMaxNumber(ca calculate.CalculateServiceClient) {

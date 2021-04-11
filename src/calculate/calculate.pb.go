@@ -79,6 +79,100 @@ func (x *Sums) GetSum2() int32 {
 	return 0
 }
 
+type SquareRootRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Number float32 `protobuf:"fixed32,1,opt,name=number,proto3" json:"number,omitempty"`
+}
+
+func (x *SquareRootRequest) Reset() {
+	*x = SquareRootRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_calculate_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SquareRootRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SquareRootRequest) ProtoMessage() {}
+
+func (x *SquareRootRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_calculate_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SquareRootRequest.ProtoReflect.Descriptor instead.
+func (*SquareRootRequest) Descriptor() ([]byte, []int) {
+	return file_proto_calculate_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *SquareRootRequest) GetNumber() float32 {
+	if x != nil {
+		return x.Number
+	}
+	return 0
+}
+
+type SquareRootResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Result float32 `protobuf:"fixed32,1,opt,name=result,proto3" json:"result,omitempty"`
+}
+
+func (x *SquareRootResponse) Reset() {
+	*x = SquareRootResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_calculate_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SquareRootResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SquareRootResponse) ProtoMessage() {}
+
+func (x *SquareRootResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_calculate_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SquareRootResponse.ProtoReflect.Descriptor instead.
+func (*SquareRootResponse) Descriptor() ([]byte, []int) {
+	return file_proto_calculate_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *SquareRootResponse) GetResult() float32 {
+	if x != nil {
+		return x.Result
+	}
+	return 0
+}
+
 type AddRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -90,7 +184,7 @@ type AddRequest struct {
 func (x *AddRequest) Reset() {
 	*x = AddRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_calculate_proto_msgTypes[1]
+		mi := &file_proto_calculate_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -103,7 +197,7 @@ func (x *AddRequest) String() string {
 func (*AddRequest) ProtoMessage() {}
 
 func (x *AddRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_calculate_proto_msgTypes[1]
+	mi := &file_proto_calculate_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -116,7 +210,7 @@ func (x *AddRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddRequest.ProtoReflect.Descriptor instead.
 func (*AddRequest) Descriptor() ([]byte, []int) {
-	return file_proto_calculate_proto_rawDescGZIP(), []int{1}
+	return file_proto_calculate_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *AddRequest) GetSums() *Sums {
@@ -137,7 +231,7 @@ type AddResponse struct {
 func (x *AddResponse) Reset() {
 	*x = AddResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_calculate_proto_msgTypes[2]
+		mi := &file_proto_calculate_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -150,7 +244,7 @@ func (x *AddResponse) String() string {
 func (*AddResponse) ProtoMessage() {}
 
 func (x *AddResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_calculate_proto_msgTypes[2]
+	mi := &file_proto_calculate_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -163,7 +257,7 @@ func (x *AddResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddResponse.ProtoReflect.Descriptor instead.
 func (*AddResponse) Descriptor() ([]byte, []int) {
-	return file_proto_calculate_proto_rawDescGZIP(), []int{2}
+	return file_proto_calculate_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *AddResponse) GetResult() int32 {
@@ -184,7 +278,7 @@ type PrimeNumberRequest struct {
 func (x *PrimeNumberRequest) Reset() {
 	*x = PrimeNumberRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_calculate_proto_msgTypes[3]
+		mi := &file_proto_calculate_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -197,7 +291,7 @@ func (x *PrimeNumberRequest) String() string {
 func (*PrimeNumberRequest) ProtoMessage() {}
 
 func (x *PrimeNumberRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_calculate_proto_msgTypes[3]
+	mi := &file_proto_calculate_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -210,7 +304,7 @@ func (x *PrimeNumberRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PrimeNumberRequest.ProtoReflect.Descriptor instead.
 func (*PrimeNumberRequest) Descriptor() ([]byte, []int) {
-	return file_proto_calculate_proto_rawDescGZIP(), []int{3}
+	return file_proto_calculate_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *PrimeNumberRequest) GetNum() int32 {
@@ -231,7 +325,7 @@ type PrimeNumberResponse struct {
 func (x *PrimeNumberResponse) Reset() {
 	*x = PrimeNumberResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_calculate_proto_msgTypes[4]
+		mi := &file_proto_calculate_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -244,7 +338,7 @@ func (x *PrimeNumberResponse) String() string {
 func (*PrimeNumberResponse) ProtoMessage() {}
 
 func (x *PrimeNumberResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_calculate_proto_msgTypes[4]
+	mi := &file_proto_calculate_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -257,7 +351,7 @@ func (x *PrimeNumberResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PrimeNumberResponse.ProtoReflect.Descriptor instead.
 func (*PrimeNumberResponse) Descriptor() ([]byte, []int) {
-	return file_proto_calculate_proto_rawDescGZIP(), []int{4}
+	return file_proto_calculate_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *PrimeNumberResponse) GetResult() int32 {
@@ -278,7 +372,7 @@ type ClientStreamNumberRequest struct {
 func (x *ClientStreamNumberRequest) Reset() {
 	*x = ClientStreamNumberRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_calculate_proto_msgTypes[5]
+		mi := &file_proto_calculate_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -291,7 +385,7 @@ func (x *ClientStreamNumberRequest) String() string {
 func (*ClientStreamNumberRequest) ProtoMessage() {}
 
 func (x *ClientStreamNumberRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_calculate_proto_msgTypes[5]
+	mi := &file_proto_calculate_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -304,7 +398,7 @@ func (x *ClientStreamNumberRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClientStreamNumberRequest.ProtoReflect.Descriptor instead.
 func (*ClientStreamNumberRequest) Descriptor() ([]byte, []int) {
-	return file_proto_calculate_proto_rawDescGZIP(), []int{5}
+	return file_proto_calculate_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ClientStreamNumberRequest) GetNum() float32 {
@@ -325,7 +419,7 @@ type ClientStreamNumberResponse struct {
 func (x *ClientStreamNumberResponse) Reset() {
 	*x = ClientStreamNumberResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_calculate_proto_msgTypes[6]
+		mi := &file_proto_calculate_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -338,7 +432,7 @@ func (x *ClientStreamNumberResponse) String() string {
 func (*ClientStreamNumberResponse) ProtoMessage() {}
 
 func (x *ClientStreamNumberResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_calculate_proto_msgTypes[6]
+	mi := &file_proto_calculate_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -351,7 +445,7 @@ func (x *ClientStreamNumberResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClientStreamNumberResponse.ProtoReflect.Descriptor instead.
 func (*ClientStreamNumberResponse) Descriptor() ([]byte, []int) {
-	return file_proto_calculate_proto_rawDescGZIP(), []int{6}
+	return file_proto_calculate_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ClientStreamNumberResponse) GetNum() float32 {
@@ -372,7 +466,7 @@ type StreamNumberRequest struct {
 func (x *StreamNumberRequest) Reset() {
 	*x = StreamNumberRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_calculate_proto_msgTypes[7]
+		mi := &file_proto_calculate_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -385,7 +479,7 @@ func (x *StreamNumberRequest) String() string {
 func (*StreamNumberRequest) ProtoMessage() {}
 
 func (x *StreamNumberRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_calculate_proto_msgTypes[7]
+	mi := &file_proto_calculate_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -398,7 +492,7 @@ func (x *StreamNumberRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StreamNumberRequest.ProtoReflect.Descriptor instead.
 func (*StreamNumberRequest) Descriptor() ([]byte, []int) {
-	return file_proto_calculate_proto_rawDescGZIP(), []int{7}
+	return file_proto_calculate_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *StreamNumberRequest) GetNum() int32 {
@@ -419,7 +513,7 @@ type StreamNumberResponse struct {
 func (x *StreamNumberResponse) Reset() {
 	*x = StreamNumberResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_calculate_proto_msgTypes[8]
+		mi := &file_proto_calculate_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -432,7 +526,7 @@ func (x *StreamNumberResponse) String() string {
 func (*StreamNumberResponse) ProtoMessage() {}
 
 func (x *StreamNumberResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_calculate_proto_msgTypes[8]
+	mi := &file_proto_calculate_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -445,7 +539,7 @@ func (x *StreamNumberResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StreamNumberResponse.ProtoReflect.Descriptor instead.
 func (*StreamNumberResponse) Descriptor() ([]byte, []int) {
-	return file_proto_calculate_proto_rawDescGZIP(), []int{8}
+	return file_proto_calculate_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *StreamNumberResponse) GetNum() int32 {
@@ -463,52 +557,62 @@ var file_proto_calculate_proto_rawDesc = []byte{
 	0x74, 0x65, 0x22, 0x2e, 0x0a, 0x04, 0x53, 0x75, 0x6d, 0x73, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x75,
 	0x6d, 0x31, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x73, 0x75, 0x6d, 0x31, 0x12, 0x12,
 	0x0a, 0x04, 0x73, 0x75, 0x6d, 0x32, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x73, 0x75,
-	0x6d, 0x32, 0x22, 0x31, 0x0a, 0x0a, 0x41, 0x64, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x12, 0x23, 0x0a, 0x04, 0x73, 0x75, 0x6d, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0f,
-	0x2e, 0x63, 0x61, 0x6c, 0x63, 0x75, 0x6c, 0x61, 0x74, 0x65, 0x2e, 0x53, 0x75, 0x6d, 0x73, 0x52,
-	0x04, 0x73, 0x75, 0x6d, 0x73, 0x22, 0x25, 0x0a, 0x0b, 0x41, 0x64, 0x64, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x22, 0x26, 0x0a, 0x12,
+	0x6d, 0x32, 0x22, 0x2b, 0x0a, 0x11, 0x53, 0x71, 0x75, 0x61, 0x72, 0x65, 0x52, 0x6f, 0x6f, 0x74,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x6e, 0x75, 0x6d, 0x62, 0x65,
+	0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x02, 0x52, 0x06, 0x6e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x22,
+	0x2c, 0x0a, 0x12, 0x53, 0x71, 0x75, 0x61, 0x72, 0x65, 0x52, 0x6f, 0x6f, 0x74, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x02, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x22, 0x31, 0x0a,
+	0x0a, 0x41, 0x64, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x23, 0x0a, 0x04, 0x73,
+	0x75, 0x6d, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x63, 0x61, 0x6c, 0x63,
+	0x75, 0x6c, 0x61, 0x74, 0x65, 0x2e, 0x53, 0x75, 0x6d, 0x73, 0x52, 0x04, 0x73, 0x75, 0x6d, 0x73,
+	0x22, 0x25, 0x0a, 0x0b, 0x41, 0x64, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
+	0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52,
+	0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x22, 0x26, 0x0a, 0x12, 0x50, 0x72, 0x69, 0x6d, 0x65,
+	0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x10, 0x0a,
+	0x03, 0x6e, 0x75, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x6e, 0x75, 0x6d, 0x22,
+	0x2d, 0x0a, 0x13, 0x50, 0x72, 0x69, 0x6d, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x22, 0x2d,
+	0x0a, 0x19, 0x43, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x4e, 0x75,
+	0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x6e,
+	0x75, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x02, 0x52, 0x03, 0x6e, 0x75, 0x6d, 0x22, 0x2e, 0x0a,
+	0x1a, 0x43, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x4e, 0x75, 0x6d,
+	0x62, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x6e,
+	0x75, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x02, 0x52, 0x03, 0x6e, 0x75, 0x6d, 0x22, 0x27, 0x0a,
+	0x13, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x6e, 0x75, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x03, 0x6e, 0x75, 0x6d, 0x22, 0x28, 0x0a, 0x14, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6d,
+	0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x10,
+	0x0a, 0x03, 0x6e, 0x75, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x6e, 0x75, 0x6d,
+	0x32, 0xa6, 0x03, 0x0a, 0x10, 0x43, 0x61, 0x6c, 0x63, 0x75, 0x6c, 0x61, 0x74, 0x65, 0x53, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x36, 0x0a, 0x03, 0x41, 0x64, 0x64, 0x12, 0x15, 0x2e, 0x63,
+	0x61, 0x6c, 0x63, 0x75, 0x6c, 0x61, 0x74, 0x65, 0x2e, 0x41, 0x64, 0x64, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x63, 0x61, 0x6c, 0x63, 0x75, 0x6c, 0x61, 0x74, 0x65, 0x2e,
+	0x41, 0x64, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x57, 0x0a,
+	0x12, 0x50, 0x72, 0x69, 0x6d, 0x65, 0x44, 0x65, 0x63, 0x6f, 0x6d, 0x70, 0x6f, 0x73, 0x69, 0x74,
+	0x69, 0x6f, 0x6e, 0x12, 0x1d, 0x2e, 0x63, 0x61, 0x6c, 0x63, 0x75, 0x6c, 0x61, 0x74, 0x65, 0x2e,
 	0x50, 0x72, 0x69, 0x6d, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x6e, 0x75, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52,
-	0x03, 0x6e, 0x75, 0x6d, 0x22, 0x2d, 0x0a, 0x13, 0x50, 0x72, 0x69, 0x6d, 0x65, 0x4e, 0x75, 0x6d,
-	0x62, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72,
-	0x65, 0x73, 0x75, 0x6c, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x72, 0x65, 0x73,
-	0x75, 0x6c, 0x74, 0x22, 0x2d, 0x0a, 0x19, 0x43, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72,
-	0x65, 0x61, 0x6d, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x12, 0x10, 0x0a, 0x03, 0x6e, 0x75, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x02, 0x52, 0x03, 0x6e,
-	0x75, 0x6d, 0x22, 0x2e, 0x0a, 0x1a, 0x43, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x65,
-	0x61, 0x6d, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x12, 0x10, 0x0a, 0x03, 0x6e, 0x75, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x02, 0x52, 0x03, 0x6e,
-	0x75, 0x6d, 0x22, 0x27, 0x0a, 0x13, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x4e, 0x75, 0x6d, 0x62,
-	0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x6e, 0x75, 0x6d,
-	0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x6e, 0x75, 0x6d, 0x22, 0x28, 0x0a, 0x14, 0x53,
-	0x74, 0x72, 0x65, 0x61, 0x6d, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x6e, 0x75, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05,
-	0x52, 0x03, 0x6e, 0x75, 0x6d, 0x32, 0xd9, 0x02, 0x0a, 0x10, 0x43, 0x61, 0x6c, 0x63, 0x75, 0x6c,
-	0x61, 0x74, 0x65, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x36, 0x0a, 0x03, 0x41, 0x64,
-	0x64, 0x12, 0x15, 0x2e, 0x63, 0x61, 0x6c, 0x63, 0x75, 0x6c, 0x61, 0x74, 0x65, 0x2e, 0x41, 0x64,
-	0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x63, 0x61, 0x6c, 0x63, 0x75,
-	0x6c, 0x61, 0x74, 0x65, 0x2e, 0x41, 0x64, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x22, 0x00, 0x12, 0x57, 0x0a, 0x12, 0x50, 0x72, 0x69, 0x6d, 0x65, 0x44, 0x65, 0x63, 0x6f, 0x6d,
-	0x70, 0x6f, 0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x1d, 0x2e, 0x63, 0x61, 0x6c, 0x63, 0x75,
-	0x6c, 0x61, 0x74, 0x65, 0x2e, 0x50, 0x72, 0x69, 0x6d, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1e, 0x2e, 0x63, 0x61, 0x6c, 0x63, 0x75, 0x6c,
-	0x61, 0x74, 0x65, 0x2e, 0x50, 0x72, 0x69, 0x6d, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x30, 0x01, 0x12, 0x60, 0x0a, 0x0d, 0x41,
-	0x76, 0x65, 0x72, 0x61, 0x67, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x12, 0x24, 0x2e, 0x63,
-	0x61, 0x6c, 0x63, 0x75, 0x6c, 0x61, 0x74, 0x65, 0x2e, 0x43, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x53,
-	0x74, 0x72, 0x65, 0x61, 0x6d, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x1a, 0x25, 0x2e, 0x63, 0x61, 0x6c, 0x63, 0x75, 0x6c, 0x61, 0x74, 0x65, 0x2e, 0x43,
-	0x6c, 0x69, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x4e, 0x75, 0x6d, 0x62, 0x65,
-	0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x28, 0x01, 0x12, 0x52, 0x0a,
-	0x09, 0x4d, 0x61, 0x78, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x12, 0x1e, 0x2e, 0x63, 0x61, 0x6c,
-	0x63, 0x75, 0x6c, 0x61, 0x74, 0x65, 0x2e, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x4e, 0x75, 0x6d,
-	0x62, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1f, 0x2e, 0x63, 0x61, 0x6c,
-	0x63, 0x75, 0x6c, 0x61, 0x74, 0x65, 0x2e, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x4e, 0x75, 0x6d,
-	0x62, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x28, 0x01, 0x30,
-	0x01, 0x42, 0x0d, 0x5a, 0x0b, 0x2e, 0x2f, 0x63, 0x61, 0x6c, 0x63, 0x75, 0x6c, 0x61, 0x74, 0x65,
-	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x73, 0x74, 0x1a, 0x1e, 0x2e, 0x63, 0x61, 0x6c, 0x63, 0x75, 0x6c, 0x61, 0x74, 0x65, 0x2e, 0x50,
+	0x72, 0x69, 0x6d, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x22, 0x00, 0x30, 0x01, 0x12, 0x60, 0x0a, 0x0d, 0x41, 0x76, 0x65, 0x72, 0x61, 0x67,
+	0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x12, 0x24, 0x2e, 0x63, 0x61, 0x6c, 0x63, 0x75, 0x6c,
+	0x61, 0x74, 0x65, 0x2e, 0x43, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6d,
+	0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x25, 0x2e,
+	0x63, 0x61, 0x6c, 0x63, 0x75, 0x6c, 0x61, 0x74, 0x65, 0x2e, 0x43, 0x6c, 0x69, 0x65, 0x6e, 0x74,
+	0x53, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x28, 0x01, 0x12, 0x52, 0x0a, 0x09, 0x4d, 0x61, 0x78, 0x4e,
+	0x75, 0x6d, 0x62, 0x65, 0x72, 0x12, 0x1e, 0x2e, 0x63, 0x61, 0x6c, 0x63, 0x75, 0x6c, 0x61, 0x74,
+	0x65, 0x2e, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1f, 0x2e, 0x63, 0x61, 0x6c, 0x63, 0x75, 0x6c, 0x61, 0x74,
+	0x65, 0x2e, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x28, 0x01, 0x30, 0x01, 0x12, 0x4b, 0x0a, 0x0a,
+	0x53, 0x71, 0x75, 0x61, 0x72, 0x65, 0x52, 0x6f, 0x6f, 0x74, 0x12, 0x1c, 0x2e, 0x63, 0x61, 0x6c,
+	0x63, 0x75, 0x6c, 0x61, 0x74, 0x65, 0x2e, 0x53, 0x71, 0x75, 0x61, 0x72, 0x65, 0x52, 0x6f, 0x6f,
+	0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x63, 0x61, 0x6c, 0x63, 0x75,
+	0x6c, 0x61, 0x74, 0x65, 0x2e, 0x53, 0x71, 0x75, 0x61, 0x72, 0x65, 0x52, 0x6f, 0x6f, 0x74, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x42, 0x0d, 0x5a, 0x0b, 0x2e, 0x2f, 0x63,
+	0x61, 0x6c, 0x63, 0x75, 0x6c, 0x61, 0x74, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -523,33 +627,37 @@ func file_proto_calculate_proto_rawDescGZIP() []byte {
 	return file_proto_calculate_proto_rawDescData
 }
 
-var file_proto_calculate_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_proto_calculate_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_proto_calculate_proto_goTypes = []interface{}{
 	(*Sums)(nil),                       // 0: calculate.Sums
-	(*AddRequest)(nil),                 // 1: calculate.AddRequest
-	(*AddResponse)(nil),                // 2: calculate.AddResponse
-	(*PrimeNumberRequest)(nil),         // 3: calculate.PrimeNumberRequest
-	(*PrimeNumberResponse)(nil),        // 4: calculate.PrimeNumberResponse
-	(*ClientStreamNumberRequest)(nil),  // 5: calculate.ClientStreamNumberRequest
-	(*ClientStreamNumberResponse)(nil), // 6: calculate.ClientStreamNumberResponse
-	(*StreamNumberRequest)(nil),        // 7: calculate.StreamNumberRequest
-	(*StreamNumberResponse)(nil),       // 8: calculate.StreamNumberResponse
+	(*SquareRootRequest)(nil),          // 1: calculate.SquareRootRequest
+	(*SquareRootResponse)(nil),         // 2: calculate.SquareRootResponse
+	(*AddRequest)(nil),                 // 3: calculate.AddRequest
+	(*AddResponse)(nil),                // 4: calculate.AddResponse
+	(*PrimeNumberRequest)(nil),         // 5: calculate.PrimeNumberRequest
+	(*PrimeNumberResponse)(nil),        // 6: calculate.PrimeNumberResponse
+	(*ClientStreamNumberRequest)(nil),  // 7: calculate.ClientStreamNumberRequest
+	(*ClientStreamNumberResponse)(nil), // 8: calculate.ClientStreamNumberResponse
+	(*StreamNumberRequest)(nil),        // 9: calculate.StreamNumberRequest
+	(*StreamNumberResponse)(nil),       // 10: calculate.StreamNumberResponse
 }
 var file_proto_calculate_proto_depIdxs = []int32{
-	0, // 0: calculate.AddRequest.sums:type_name -> calculate.Sums
-	1, // 1: calculate.CalculateService.Add:input_type -> calculate.AddRequest
-	3, // 2: calculate.CalculateService.PrimeDecomposition:input_type -> calculate.PrimeNumberRequest
-	5, // 3: calculate.CalculateService.AverageNumber:input_type -> calculate.ClientStreamNumberRequest
-	7, // 4: calculate.CalculateService.MaxNumber:input_type -> calculate.StreamNumberRequest
-	2, // 5: calculate.CalculateService.Add:output_type -> calculate.AddResponse
-	4, // 6: calculate.CalculateService.PrimeDecomposition:output_type -> calculate.PrimeNumberResponse
-	6, // 7: calculate.CalculateService.AverageNumber:output_type -> calculate.ClientStreamNumberResponse
-	8, // 8: calculate.CalculateService.MaxNumber:output_type -> calculate.StreamNumberResponse
-	5, // [5:9] is the sub-list for method output_type
-	1, // [1:5] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	0,  // 0: calculate.AddRequest.sums:type_name -> calculate.Sums
+	3,  // 1: calculate.CalculateService.Add:input_type -> calculate.AddRequest
+	5,  // 2: calculate.CalculateService.PrimeDecomposition:input_type -> calculate.PrimeNumberRequest
+	7,  // 3: calculate.CalculateService.AverageNumber:input_type -> calculate.ClientStreamNumberRequest
+	9,  // 4: calculate.CalculateService.MaxNumber:input_type -> calculate.StreamNumberRequest
+	1,  // 5: calculate.CalculateService.SquareRoot:input_type -> calculate.SquareRootRequest
+	4,  // 6: calculate.CalculateService.Add:output_type -> calculate.AddResponse
+	6,  // 7: calculate.CalculateService.PrimeDecomposition:output_type -> calculate.PrimeNumberResponse
+	8,  // 8: calculate.CalculateService.AverageNumber:output_type -> calculate.ClientStreamNumberResponse
+	10, // 9: calculate.CalculateService.MaxNumber:output_type -> calculate.StreamNumberResponse
+	2,  // 10: calculate.CalculateService.SquareRoot:output_type -> calculate.SquareRootResponse
+	6,  // [6:11] is the sub-list for method output_type
+	1,  // [1:6] is the sub-list for method input_type
+	1,  // [1:1] is the sub-list for extension type_name
+	1,  // [1:1] is the sub-list for extension extendee
+	0,  // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_proto_calculate_proto_init() }
@@ -571,7 +679,7 @@ func file_proto_calculate_proto_init() {
 			}
 		}
 		file_proto_calculate_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddRequest); i {
+			switch v := v.(*SquareRootRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -583,7 +691,7 @@ func file_proto_calculate_proto_init() {
 			}
 		}
 		file_proto_calculate_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddResponse); i {
+			switch v := v.(*SquareRootResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -595,7 +703,7 @@ func file_proto_calculate_proto_init() {
 			}
 		}
 		file_proto_calculate_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PrimeNumberRequest); i {
+			switch v := v.(*AddRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -607,7 +715,7 @@ func file_proto_calculate_proto_init() {
 			}
 		}
 		file_proto_calculate_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PrimeNumberResponse); i {
+			switch v := v.(*AddResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -619,7 +727,7 @@ func file_proto_calculate_proto_init() {
 			}
 		}
 		file_proto_calculate_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ClientStreamNumberRequest); i {
+			switch v := v.(*PrimeNumberRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -631,7 +739,7 @@ func file_proto_calculate_proto_init() {
 			}
 		}
 		file_proto_calculate_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ClientStreamNumberResponse); i {
+			switch v := v.(*PrimeNumberResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -643,7 +751,7 @@ func file_proto_calculate_proto_init() {
 			}
 		}
 		file_proto_calculate_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StreamNumberRequest); i {
+			switch v := v.(*ClientStreamNumberRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -655,6 +763,30 @@ func file_proto_calculate_proto_init() {
 			}
 		}
 		file_proto_calculate_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ClientStreamNumberResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_calculate_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*StreamNumberRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_calculate_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*StreamNumberResponse); i {
 			case 0:
 				return &v.state
@@ -673,7 +805,7 @@ func file_proto_calculate_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_proto_calculate_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -703,6 +835,9 @@ type CalculateServiceClient interface {
 	PrimeDecomposition(ctx context.Context, in *PrimeNumberRequest, opts ...grpc.CallOption) (CalculateService_PrimeDecompositionClient, error)
 	AverageNumber(ctx context.Context, opts ...grpc.CallOption) (CalculateService_AverageNumberClient, error)
 	MaxNumber(ctx context.Context, opts ...grpc.CallOption) (CalculateService_MaxNumberClient, error)
+	// An error will be thrown if the argument within SquareRootRequest involves a
+	// negative number, Error result would specify - INVALID_ARGUMENT
+	SquareRoot(ctx context.Context, in *SquareRootRequest, opts ...grpc.CallOption) (*SquareRootResponse, error)
 }
 
 type calculateServiceClient struct {
@@ -819,12 +954,24 @@ func (x *calculateServiceMaxNumberClient) Recv() (*StreamNumberResponse, error) 
 	return m, nil
 }
 
+func (c *calculateServiceClient) SquareRoot(ctx context.Context, in *SquareRootRequest, opts ...grpc.CallOption) (*SquareRootResponse, error) {
+	out := new(SquareRootResponse)
+	err := c.cc.Invoke(ctx, "/calculate.CalculateService/SquareRoot", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CalculateServiceServer is the server API for CalculateService service.
 type CalculateServiceServer interface {
 	Add(context.Context, *AddRequest) (*AddResponse, error)
 	PrimeDecomposition(*PrimeNumberRequest, CalculateService_PrimeDecompositionServer) error
 	AverageNumber(CalculateService_AverageNumberServer) error
 	MaxNumber(CalculateService_MaxNumberServer) error
+	// An error will be thrown if the argument within SquareRootRequest involves a
+	// negative number, Error result would specify - INVALID_ARGUMENT
+	SquareRoot(context.Context, *SquareRootRequest) (*SquareRootResponse, error)
 }
 
 // UnimplementedCalculateServiceServer can be embedded to have forward compatible implementations.
@@ -842,6 +989,9 @@ func (*UnimplementedCalculateServiceServer) AverageNumber(CalculateService_Avera
 }
 func (*UnimplementedCalculateServiceServer) MaxNumber(CalculateService_MaxNumberServer) error {
 	return status.Errorf(codes.Unimplemented, "method MaxNumber not implemented")
+}
+func (*UnimplementedCalculateServiceServer) SquareRoot(context.Context, *SquareRootRequest) (*SquareRootResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SquareRoot not implemented")
 }
 
 func RegisterCalculateServiceServer(s *grpc.Server, srv CalculateServiceServer) {
@@ -939,6 +1089,24 @@ func (x *calculateServiceMaxNumberServer) Recv() (*StreamNumberRequest, error) {
 	return m, nil
 }
 
+func _CalculateService_SquareRoot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SquareRootRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CalculateServiceServer).SquareRoot(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/calculate.CalculateService/SquareRoot",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CalculateServiceServer).SquareRoot(ctx, req.(*SquareRootRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _CalculateService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "calculate.CalculateService",
 	HandlerType: (*CalculateServiceServer)(nil),
@@ -946,6 +1114,10 @@ var _CalculateService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Add",
 			Handler:    _CalculateService_Add_Handler,
+		},
+		{
+			MethodName: "SquareRoot",
+			Handler:    _CalculateService_SquareRoot_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
